@@ -196,36 +196,13 @@ http://localhost:5000/todos
 
 ---
 
-## 🧪 Testing
-
-Use tools like:
-* Postman
-* Insomnia
-
----
 
 ## ❗ Error Handling
 
-* Proper HTTP status codes (200, 201, 400, 404, 409, 500)
+* Proper HTTP status codes 
 * Validation for required fields
 * Centralized error middleware gracefully catching exceptions
 
----
-
-## 📌 Future Improvements
-
-* JWT Authentication
-* Pagination & Filtering
-* Swagger API Documentation
-* Deployment (Render / Railway)
-
----
-
-## 👨‍💻 Author
-
-**Sakthi Ram**
-
----
 
 ## ⭐ Conclusion
 
@@ -235,5 +212,3 @@ This project demonstrates:
 * Clean code practices
 * Database integration
 * Production-ready structure
-
-Perfect for backend interviews 🚀

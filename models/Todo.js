@@ -43,6 +43,17 @@ class Todo {
     return rows[0];
   }
 
+  static async updateCompletedStatus(id, completed) {
+    const query = `
+      UPDATE todos 
+      SET completed = ?
+      WHERE id = ?
+    `;
+    await pool.execute(query, [completed, id]);
+    const [rows] = await pool.execute('SELECT * FROM todos WHERE id = ?', [id]);
+    return rows[0];
+  }
+
   static async delete(id) {
     const [rows] = await pool.execute('SELECT * FROM todos WHERE id = ?', [id]);
     const todo = rows[0];

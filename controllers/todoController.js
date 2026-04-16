@@ -71,6 +71,27 @@ const updateTodo = async (req, res, next) => {
   }
 };
 
+const updateCompletedStatus = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { completed } = req.body;
+
+    if (typeof completed !== 'boolean') {
+      return res.status(400).json({ error: 'The "completed" field must be a boolean (true/false).' });
+    }
+
+    const existingTodo = await Todo.findById(id);
+    if (!existingTodo) {
+      return res.status(404).json({ error: 'Todo not found' });
+    }
+
+    const updatedTodo = await Todo.updateCompletedStatus(id, completed);
+    res.status(200).json(updatedTodo);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const deleteTodo = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -91,5 +112,6 @@ module.exports = {
   getTodos,
   getTodoById,
   updateTodo,
+  updateCompletedStatus,
   deleteTodo
 };
